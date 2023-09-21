@@ -1,0 +1,77 @@
+<html xmlns:th="http://thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="materialize/css/materialize.min.css" media="screen,projection" />
+
+</head>
+<header>
+	<nav class="blue">
+		<div class="nav-wrapper">
+			<a href="#" class="brand-logo">Consulta Palestra</a>
+			<ul id="nav-mobile" class="right hide-on-med-and-down">
+				<li><a href="palestras" class="waves-effect waves-light btn">
+						<i class="material-icons left">add_circle_outline</i>Listagem de Palestras</a></li>
+			</ul>
+		</div>
+	</nav>
+</header>
+
+<body>
+	<div class="container">
+
+		<div class="row" style="border: 1px solid; padding-left: 10px; margin-top: 10px;">
+			<p>Nome:<span th:text="${palestra.descricao}"></span> </p>
+			<p>Local:<span th:text="${palestra.local}"></span> </p>
+			<p>Data:<span th:text="${palestra.data}"></span> </p>
+			<p>Hora:<span th:text="${palestra.hora}"></span> </p>
+		</div>
+
+		<form method="post">
+			<div class="row">
+				<div class="input-field col s4">
+					<input type="text" name="nome" id="nome" required="true"> </input>
+					<label>Nome:</label>
+				</div>
+
+				<div class="input-field col s4">
+					<input type="text" name="cpf" id="cpf" required="true"> </input>
+					<label>Cpf:</label>
+				</div>
+
+				<div class="input-field col s4">
+					<input type="text" name="email" id="email" required="true"> </input>
+					<label>Email:</label>
+				</div>
+			</div>
+			<button class="waves-effect waves-light btn" type="submit">Salvar</button>
+		</form>
+
+		<h5>Convidados para este palestra</h5>
+		<table>
+			<thead>
+				<tr>
+					<th>Nome</th>
+					<th>Cpf</th>
+					<th>Email</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="convidado:${convidados}">
+					<td><span th:text="${convidado.nome}"></span></td>
+					<td><span th:text="${convidado.cpf}"></span></td>
+					<td><span th:text="${convidado.email}"></span></td>
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+	<script type="text/javascript" src="materialize/js/materialize.min.js">
+
+	</script>
+
+</body>
+
+</html>
